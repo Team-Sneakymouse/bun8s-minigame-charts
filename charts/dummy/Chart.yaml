@@ -1,0 +1,5 @@
+apiVersion: v2
+name: minecraft-chart
+description: Deploys a Minecraft server via NodePort
+version: 0.1.0
+appVersion: "1.20"

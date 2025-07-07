@@ -1,0 +1,17 @@
+serverName: minigame-server
+image:
+  repository: itzg/minecraft-server
+  tag: latest
+  pullPolicy: IfNotPresent
+
+env:
+  EULA: "TRUE"
+
+service:
+  type: NodePort
+  nodePort: null  # Let K8s assign randomly
+  port: 25565
+
+extraPodSpec:
+  hostNetwork: true
+  dnsPolicy: ClusterFirstWithHostNet
