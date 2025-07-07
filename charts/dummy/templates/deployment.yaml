@@ -21,3 +21,5 @@ spec:
           env:
             - name: EULA
               value: "{{ .Values.env.EULA }}"
+            - name: SERVERNAME
+              value: "{{.Values.serverName}}"

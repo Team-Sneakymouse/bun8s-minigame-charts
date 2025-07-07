@@ -1,0 +1,5 @@
+apiVersion: v2
+name: network-deploy
+description: Sets up network policies for minecraft minigames (whitelisting IP addresses)
+version: 0.1.0
+appVersion: "1.20"
