@@ -9,6 +9,8 @@ server:
 
 env:
   EULA: "TRUE"
+  RABBITMQ_HOST: amqp.bungo.ca
+  RABBITMQ_PORT: 5672
 
 service:
   type: NodePort

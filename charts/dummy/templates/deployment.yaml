@@ -23,3 +23,17 @@ spec:
               value: "{{ .Values.env.EULA }}"
             - name: SERVERNAME
               value: "{{.Values.serverName}}"
+            - name: RABBITMQ_HOST
+              value: "{{.Values.RABBITMQ_HOST}}"
+            - name: RABBITMQ_PORT
+              value: "{{.Values.RABBITMQ_PORT}}"
+            - name: RABBITMQ_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: rabbitmq-secret
+                  key: username
+            - name: RABBITMQ_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: rabbitmq-secret
+                  key: password
