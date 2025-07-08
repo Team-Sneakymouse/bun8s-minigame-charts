@@ -6,8 +6,9 @@ image:
 
 env:
   EULA: "TRUE"
-  RABBITMQ_HOST: amqp.bungo.ca
-  RABBITMQ_PORT: 5672
+  rabbit:
+    host: amqp.bungo.ca
+    port: 5672
   JVM_OPTS: "-Xmx2G -Xms1G"
 
 service:

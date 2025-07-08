@@ -26,9 +26,9 @@ spec:
             - name: SERVERNAME
               value: "{{.Values.serverName}}"
             - name: RABBITMQ_HOST
-              value: "{{.Values.RABBITMQ_HOST}}"
+              value: "{{.Values.env.rabbit.host}}"
             - name: RABBITMQ_PORT
-              value: "{{.Values.RABBITMQ_PORT}}"
+              value: "{{.Values.env.rabbit.port}}"
             - name: RABBITMQ_USERNAME
               valueFrom:
                 secretKeyRef:
