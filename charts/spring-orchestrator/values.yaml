@@ -1,0 +1,18 @@
+image:
+  repository: docker.bungo.ca/spring-orchestrator
+  tag: latest
+  pullPolicy: Always
+
+imagePullSecrets: ["nexus-creds"] # e.g., ["nexus-regcred"]
+
+env:
+  RABBITMQ_HOST: amqp.bungo.ca
+  RABBITMQ_PORT: 5672
+
+replicaCount: 1
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 8080
+

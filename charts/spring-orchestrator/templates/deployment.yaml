@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "orchestrator.fullname" . }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "orchestrator.fullname" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "orchestrator.fullname" . }}
+    spec:
+      serviceAccountName: development
+      {{- if .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- range .Values.imagePullSecrets }}
+        - name: {{ . }}
+        {{- end }}
+      {{- end }}
+      containers:
+        - name: orchestrator
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.service.targetPort }}
+          env:
+            - name: RABBITMQ_HOST
+              value: "{{ .Values.env.RABBITMQ_HOST }}"
+            - name: RABBITMQ_PORT
+              value: "{{ .Values.env.RABBITMQ_PORT }}"
+            - name: RABBITMQ_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: rabbitmq-secret
+                  key: username
+            - name: RABBITMQ_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: rabbitmq-secret
+                  key: password
+          volumeMounts:
+            - name: charts-volume
+              mountPath: /root/
+      volumes:
+        - name: charts-volume
+          hostPath:
+            path: /charts
+            type: Directory
