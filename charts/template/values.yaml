@@ -2,7 +2,7 @@ serverName: minigame-template-server
 image:
   repository: docker.bungo.ca/minigame-template
   tag: latest
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
 
 env:
   EULA: "TRUE"
