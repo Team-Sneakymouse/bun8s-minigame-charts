@@ -1,5 +1,0 @@
-apiVersion: v2
-name: dummy-chart
-description: Deploys a dummy Minecraft server via NodePort
-version: 0.1.0
-appVersion: "1.20"

@@ -1,0 +1,16 @@
+serverName: minigame-template-server
+image:
+  repository: docker.bungo.ca/minigame-template
+  tag: latest
+  pullPolicy: IfNotPresent
+
+env:
+  EULA: "TRUE"
+  RABBITMQ_HOST: amqp.bungo.ca
+  RABBITMQ_PORT: 5672
+  JVM_OPTS: "-Xmx2G -Xms1G"
+
+service:
+  type: NodePort
+  nodePort: null  # Let K8s assign randomly
+  port: 25565
