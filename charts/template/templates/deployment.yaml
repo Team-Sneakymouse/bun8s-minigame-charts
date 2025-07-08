@@ -18,6 +18,8 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - containerPort: {{ .Values.service.port }}
+          tty: TRUE
+          stdin: TRUE
           env:
             - name: JVM_OPTS
               value: "{{ .Values.env.JVM_OPTS }}"
