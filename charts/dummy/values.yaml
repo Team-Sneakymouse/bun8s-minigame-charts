@@ -4,9 +4,6 @@ image:
   tag: latest
   pullPolicy: IfNotPresent
 
-server:
-  ipBlock: 99.226.105.1/32
-
 env:
   EULA: "TRUE"
   RABBITMQ_HOST: amqp.bungo.ca
