@@ -12,6 +12,10 @@ spec:
       labels:
         app: {{ .Values.serverName }}
     spec:
+      volumes:
+        - name: maps-volume
+          persistentVolumeClaim:
+            claimName: maps-pvc
       containers:
         - name: minecraft
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -20,6 +24,11 @@ spec:
             - containerPort: {{ .Values.service.port }}
           tty: TRUE
           stdin: TRUE
+          volumeMounts:
+            - name: maps-volume
+              mountPath: /maps
+              readOnly: TRUE
+
           env:
             - name: JVM_OPTS
               value: "{{ .Values.env.JVM_OPTS }}"
@@ -27,6 +36,8 @@ spec:
               value: "{{ .Values.env.EULA }}"
             - name: SERVERNAME
               value: "{{.Values.serverName}}"
+            - name: MAP_NAME
+              value: {{ .Values.map.name }}
             - name: RABBITMQ_HOST
               value: "{{.Values.env.rabbit.host}}"
             - name: RABBITMQ_PORT

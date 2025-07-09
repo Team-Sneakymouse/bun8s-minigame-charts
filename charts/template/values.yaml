@@ -15,3 +15,6 @@ service:
   type: NodePort
   nodePort: null  # Let K8s assign randomly
   port: 25565
+
+map:
+  name: template-map
