@@ -16,6 +16,9 @@ spec:
         - name: maps-volume
           persistentVolumeClaim:
             claimName: maps-pvc
+        - name: plugins-volume
+          persistentVolumeClaim:
+            claimName: plugins-pvc
       containers:
         - name: minecraft
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -27,6 +30,9 @@ spec:
           volumeMounts:
             - name: maps-volume
               mountPath: /maps
+              readOnly: TRUE
+            - name: plugins-volume
+              mountPath: /plugins
               readOnly: TRUE
 
           env:
