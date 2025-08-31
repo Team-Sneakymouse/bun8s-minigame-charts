@@ -1,6 +1,6 @@
 serverName: minigame-lasertag-server
 image:
-  repository: docker.bungo.ca/minigame-lasetag
+  repository: docker.bungo.ca/minigame-lasertag
   tag: latest
   pullPolicy: Always
 
